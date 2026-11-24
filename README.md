@@ -6,7 +6,7 @@
 [![Ollama](https://img.shields.io/badge/Ollama-qwen2.5%3A3b-black?logo=ollama)](https://ollama.ai/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> **GenStudio** is a 100% local, privacy-first Generative AI creative suite built with an authentic **ComfyUI v1** node-graph interface. It runs completely offline on Apple Silicon (M1/M2/M3/M4) Macs using PyTorch Metal Performance Shaders (MPS), requiring zero paid APIs or cloud dependencies.
+> **GenStudio** is a 100% local, privacy-first Generative AI creative suite built  It runs completely offline on Apple Silicon (M1/M2/M3/M4) Macs using PyTorch Metal Performance Shaders (MPS), requiring zero paid APIs or cloud dependencies.
 
 ---
 
