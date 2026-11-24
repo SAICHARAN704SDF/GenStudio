@@ -141,6 +141,7 @@ def generate_image(req: GenerateRequest):
             "badge_color": clip_results["badge_color"],
             "generation_time": round(gen_latency, 2),
             "steps": req.steps or 2,
+            "seed": req.seed,
             "lora_path": req.lora_path,
             "lora_scale": req.lora_scale if req.lora_path else 0.0,
             "comparison": comparison_data,

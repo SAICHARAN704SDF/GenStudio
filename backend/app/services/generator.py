@@ -153,6 +153,15 @@ class SDTurboGenerator:
         except Exception as e:
             print(f"[Generator] Warning adjusting LoRA scale: {e}")
 
+    def _reset_scheduler(self):
+        """Resets diffusers scheduler step indices to prevent out-of-bounds errors on consecutive runs."""
+        for p in [self.pipe, self._img2img_pipe]:
+            if p is not None and hasattr(p, "scheduler"):
+                if hasattr(p.scheduler, "_step_index"):
+                    p.scheduler._step_index = None
+                if hasattr(p.scheduler, "_begin_index"):
+                    p.scheduler._begin_index = None
+
     def generate(
         self,
         prompt: str,
@@ -167,6 +176,7 @@ class SDTurboGenerator:
         """
         Executes Text-to-Image (T2I) synthesis.
         """
+        self._reset_scheduler()
         if lora_path:
             self.apply_lora(lora_path, lora_scale)
         elif self.current_lora_path is not None:
@@ -226,6 +236,7 @@ class SDTurboGenerator:
             z_t = sqrt(alpha_bar_t) * z_0 + sqrt(1 - alpha_bar_t) * eps
         and then denoises backwards under text guidance.
         """
+        self._reset_scheduler()
         if lora_path:
             self.apply_lora(lora_path, lora_scale)
         elif self.current_lora_path is not None:
@@ -244,7 +255,7 @@ class SDTurboGenerator:
             "image": image,
             "prompt": prompt,
             "strength": strength,
-            "num_inference_steps": max(2, int(num_inference_steps / strength)) if strength > 0 else 2,
+            "num_inference_steps": max(2, num_inference_steps),
             "guidance_scale": 0.0,
             "generator": generator,
         }
@@ -278,7 +289,11 @@ class SDTurboGenerator:
         """
         Executes Spherical Linear Interpolation across the latent noise manifold.
         Generates num_frames intermediate visualizations between seed_a and seed_b.
+        Isolates execution from any active LoRA adapters to ensure pure manifold interpolation.
         """
+        if self.current_lora_path is not None:
+            self.apply_lora(None, 0.0)
+
         # Sample latent noise vectors on CPU / MPS
         gen_a = torch.Generator(device="cpu").manual_seed(seed_a)
         gen_b = torch.Generator(device="cpu").manual_seed(seed_b)
@@ -291,6 +306,7 @@ class SDTurboGenerator:
         frames = []
 
         for l in lambdas:
+            self._reset_scheduler()
             z_interp = slerp(l, z_a, z_b).to(DEVICE)
             with torch.inference_mode():
                 out = self.pipe(
