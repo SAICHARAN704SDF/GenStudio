@@ -1,0 +1,622 @@
+/* ==========================================================================
+   ComfyUI Authentic Dark Theme Styles
+   Matches ComfyUI v1 / Comfy Desktop (comfy.org) Interface
+   ========================================================================== */
+
+:root {
+  --comfy-bg-darkest: #121316;
+  --comfy-bg-darker: #18191d;
+  --comfy-bg-card: #202227;
+  --comfy-bg-card-header: #26282e;
+  --comfy-bg-input: #151619;
+  --comfy-border: #31333a;
+  --comfy-border-light: #444752;
+  --comfy-text-light: #ececf1;
+  --comfy-text-dim: #9ba1ad;
+  --comfy-text-muted: #6b7280;
+
+  /* Socket & Wire Data Type Colors */
+  --socket-model: #a855f7;       /* Purple - Model / UNet */
+  --socket-clip: #eab308;        /* Yellow - CLIP Text Encoder */
+  --socket-conditioning: #f97316;/* Orange - Positive / Negative conditioning */
+  --socket-latent: #ec4899;      /* Pink / Magenta - Latent tensor */
+  --socket-vae: #ef4444;         /* Red - VAE encoder / decoder */
+  --socket-image: #22c55e;       /* Green - RGB image */
+  --socket-context: #06b6d4;     /* Cyan - RAG context */
+
+  /* Action Buttons */
+  --comfy-blue: #2563eb;
+  --comfy-blue-hover: #1d4ed8;
+  --comfy-red: #dc2626;
+  --comfy-glow-blue: rgba(37, 99, 235, 0.45);
+  --comfy-active-node-glow: rgba(59, 130, 246, 0.7);
+}
+
+/* Base resets for full-screen ComfyUI layout */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--comfy-bg-darkest);
+  color: var(--comfy-text-light);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  user-select: none;
+}
+
+.comfy-app {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--comfy-bg-darkest);
+}
+
+/* ==========================================================================
+   Window Title Bar (Topmost system bar)
+   ========================================================================== */
+.comfy-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 38px;
+  background-color: #111215;
+  border-bottom: 1px solid var(--comfy-border);
+  padding: 0 12px;
+  font-size: 12px;
+  color: var(--comfy-text-dim);
+  z-index: 50;
+}
+
+.comfy-title-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.comfy-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  background-color: var(--comfy-bg-card);
+  border: 1px solid var(--comfy-border);
+  border-radius: 6px;
+  color: var(--comfy-text-light);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.comfy-tab-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  box-shadow: 0 0 6px #3b82f6;
+}
+
+.comfy-title-center {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--comfy-text-light);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.comfy-title-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.comfy-window-btn {
+  background: transparent;
+  color: var(--comfy-text-dim);
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.comfy-window-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Top Application Toolbar
+   ========================================================================== */
+.comfy-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  background-color: var(--comfy-bg-darker);
+  border-bottom: 1px solid var(--comfy-border);
+  padding: 0 16px;
+  z-index: 40;
+}
+
+.comfy-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.comfy-mode-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--comfy-bg-input);
+  border: 1px solid var(--comfy-border);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: var(--comfy-text-light);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.comfy-mode-pill:hover, .comfy-mode-pill.active {
+  border-color: #3b82f6;
+  background-color: rgba(59, 130, 246, 0.12);
+}
+
+.comfy-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.comfy-queue-badge {
+  background-color: var(--comfy-bg-input);
+  border: 1px solid var(--comfy-border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  color: var(--comfy-text-dim);
+  font-family: monospace;
+}
+
+.comfy-run-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--comfy-blue);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 0 12px var(--comfy-glow-blue);
+  transition: all 0.2s ease;
+}
+.comfy-run-btn:hover {
+  background: var(--comfy-blue-hover);
+  box-shadow: 0 0 18px rgba(59, 130, 246, 0.6);
+}
+.comfy-run-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.comfy-cancel-btn {
+  background: rgba(220, 38, 38, 0.18);
+  border: 1px solid rgba(220, 38, 38, 0.4);
+  color: #f87171;
+  padding: 7px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.comfy-cancel-btn:hover {
+  background: var(--comfy-red);
+  color: #ffffff;
+}
+
+.comfy-active-badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Live Execution Progress Bar
+   ========================================================================== */
+.comfy-progress-bar-container {
+  height: 24px;
+  background-color: #0f1013;
+  border-bottom: 1px solid var(--comfy-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  font-size: 11px;
+  color: var(--comfy-text-dim);
+  position: relative;
+  overflow: hidden;
+  z-index: 30;
+}
+
+.comfy-progress-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #2563eb, #06b6d4);
+  opacity: 0.25;
+  transition: width 0.3s ease;
+  z-index: 1;
+}
+
+.comfy-progress-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+  transition: width 0.3s ease;
+  z-index: 2;
+}
+
+.comfy-progress-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Main Studio Body: Left Sidebar + Graph Canvas + Right Inspector
+   ========================================================================== */
+.comfy-main-body {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 110px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left vertical tool rail */
+.comfy-left-rail {
+  width: 48px;
+  background-color: var(--comfy-bg-darker);
+  border-right: 1px solid var(--comfy-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0;
+  gap: 16px;
+  z-index: 20;
+}
+
+.comfy-logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #000000;
+  border: 1px solid var(--comfy-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  color: #ffffff;
+  font-size: 18px;
+  font-family: monospace;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.comfy-rail-btn {
+  background: transparent;
+  color: var(--comfy-text-dim);
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.comfy-rail-btn:hover, .comfy-rail-btn.active {
+  background-color: var(--comfy-bg-card);
+  color: #ffffff;
+}
+
+/* Graph Canvas Area */
+.comfy-canvas-area {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  background-color: var(--comfy-bg-darkest);
+}
+
+/* ==========================================================================
+   Custom ComfyUI Node Cards
+   ========================================================================== */
+.comfy-node {
+  background-color: var(--comfy-bg-card);
+  border: 1px solid var(--comfy-border);
+  border-radius: 8px;
+  min-width: 270px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+  overflow: visible;
+  font-size: 12px;
+  color: var(--comfy-text-light);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comfy-node:hover {
+  border-color: var(--comfy-border-light);
+}
+
+/* Active running node glow (Pulsing neon outline) */
+.comfy-node.node-active {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 20px var(--comfy-active-node-glow), 0 0 35px rgba(59, 130, 246, 0.25) !important;
+  animation: nodePulse 1.8s infinite alternate ease-in-out;
+}
+
+.comfy-node.node-completed {
+  border-color: rgba(52, 211, 153, 0.6);
+}
+
+@keyframes nodePulse {
+  0% { box-shadow: 0 0 12px rgba(59, 130, 246, 0.4); }
+  100% { box-shadow: 0 0 26px rgba(59, 130, 246, 0.85), 0 0 45px rgba(59, 130, 246, 0.3); }
+}
+
+.comfy-node-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background-color: var(--comfy-bg-card-header);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-bottom: 1px solid var(--comfy-border);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.comfy-node-header-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.comfy-node-badge {
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.comfy-node-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Sockets & Handle styling */
+.comfy-socket-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4px 0;
+  font-size: 11px;
+  position: relative;
+}
+
+.socket-label-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--comfy-text-dim);
+}
+
+.socket-label-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--comfy-text-dim);
+  margin-left: auto;
+}
+
+.comfy-handle {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  border: 2px solid #111215 !important;
+  z-index: 10;
+}
+
+/* Form Controls inside Nodes */
+.comfy-input, .comfy-select, .comfy-textarea {
+  width: 100%;
+  background-color: var(--comfy-bg-input);
+  border: 1px solid var(--comfy-border);
+  border-radius: 6px;
+  padding: 7px 10px;
+  color: #ffffff;
+  font-size: 11px;
+}
+.comfy-input:focus, .comfy-select:focus, .comfy-textarea:focus {
+  border-color: #3b82f6;
+}
+
+.comfy-textarea {
+  resize: vertical;
+  min-height: 60px;
+  line-height: 1.4;
+}
+
+.comfy-slider-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.comfy-slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--comfy-text-dim);
+}
+
+/* Quick pills */
+.comfy-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.comfy-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--comfy-border);
+  color: var(--comfy-text-dim);
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.comfy-chip:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Right-Side Step & Method Process Inspector Panel
+   ========================================================================== */
+.comfy-inspector {
+  width: 360px;
+  background-color: var(--comfy-bg-darker);
+  border-left: 1px solid var(--comfy-border);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 25;
+}
+
+.comfy-inspector-header {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--comfy-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #16171b;
+}
+
+.comfy-inspector-title {
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+}
+
+.comfy-inspector-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.comfy-step-card {
+  background-color: var(--comfy-bg-card);
+  border: 1px solid var(--comfy-border);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.comfy-step-card.active-step {
+  border-color: #3b82f6;
+  background-color: rgba(59, 130, 246, 0.08);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.25);
+}
+
+.comfy-step-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.comfy-math-box {
+  background-color: #121316;
+  border: 1px solid var(--comfy-border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #38bdf8;
+  line-height: 1.4;
+}
+
+/* Minimap container */
+.react-flow__minimap {
+  background-color: #18191d !important;
+  border: 1px solid var(--comfy-border) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+}
+
+.react-flow__controls {
+  background-color: var(--comfy-bg-card) !important;
+  border: 1px solid var(--comfy-border) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+.react-flow__controls-button {
+  background: transparent !important;
+  border-bottom: 1px solid var(--comfy-border) !important;
+  color: var(--comfy-text-light) !important;
+  fill: var(--comfy-text-light) !important;
+}
+.react-flow__controls-button:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.comfy-error-banner {
+  background: rgba(239, 68, 68, 0.15);
+  border-bottom: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+  padding: 8px 16px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 60;
+}
+.comfy-error-banner button {
+  background: transparent;
+  color: #fca5a5;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+}

@@ -1,0 +1,44 @@
+# Environments and Virtualenv
+.venv/
+env/
+venv/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+*.safetensors
+
+# Node & Frontend dependencies
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
+.npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test, verification, and temporary outputs
+verify_*.cjs
+*.png
+*.jpg
+*.jpeg
+*.log
+.system_generated/
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Root test configs
+/package.json
+/package-lock.json
+
+# Offline Viva documentation (Excluded per requirements)
+VIVA_DEFENSE_GUIDE.md
+frontend/src/components/VivaGuideModal.jsx

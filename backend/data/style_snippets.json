@@ -1,0 +1,212 @@
+[
+  {
+    "id": "cyberpunk_neon",
+    "name": "Cyberpunk Neon Noir",
+    "category": "Lighting & Atmosphere",
+    "tags": ["cyberpunk", "neon", "rain", "night", "city", "futuristic"],
+    "text": "Cyberpunk neon noir aesthetic: drenched in glowing cyan and magenta neon signage, reflective wet asphalt pavements, moody volumetric rain haze, dark shadowy alleys, and atmospheric holographic reflections."
+  },
+  {
+    "id": "cinematic_golden_hour",
+    "name": "Cinematic Golden Hour",
+    "category": "Photography & Lighting",
+    "tags": ["golden hour", "sunset", "cinematic", "warm", "portrait", "film"],
+    "text": "Cinematic golden hour lighting: warm ambient rim-lighting, soft diffused sun rays, natural 35mm film grain, gentle anamorphic lens flare, deep warm shadows, and shallow depth of field (f/1.8)."
+  },
+  {
+    "id": "studio_portrait",
+    "name": "Rembrandt Studio Portrait",
+    "category": "Photography & Lighting",
+    "tags": ["portrait", "studio", "lighting", "rembrandt", "professional"],
+    "text": "Professional studio portrait: dramatic Rembrandt triangle lighting on cheek, large softbox key light, subtle rim separation light, crisp specular catchlights in the eyes, neutral gray backdrop, 85mm lens sharpness."
+  },
+  {
+    "id": "surrealist_dreamscape",
+    "name": "Surrealist Dreamscape",
+    "category": "Artistic Style",
+    "tags": ["surreal", "dream", "fantasy", "dali", "ethereal"],
+    "text": "Surrealist dreamscape inspired by Salvador Dali: impossible floating structures, ethereal translucent clouds, gravity-defying architecture, paradoxical perspectives, and a vast otherworldly twilight horizon."
+  },
+  {
+    "id": "macro_botanical",
+    "name": "Macro Botanical Nature",
+    "category": "Photography & Technique",
+    "tags": ["macro", "botanical", "nature", "leaves", "insects", "details"],
+    "text": "Ultra-detailed macro nature photography: f/2.8 shallow focus, glistening morning dew drops with microscopic reflections, intricate cellular leaf veins, soft creamy bokeh background, and gentle diffused morning light."
+  },
+  {
+    "id": "ukiyo_e_woodblock",
+    "name": "Japanese Ukiyo-e Woodblock",
+    "category": "Artistic Style",
+    "tags": ["japanese", "woodblock", "traditional", "hokusai", "edo"],
+    "text": "Traditional Japanese Ukiyo-e woodblock print: bold rhythmic black contour lines, organic paper texture with subtle woodgrain marks, flat decorative color fills in indigo and ochre, decorative cloud swirls."
+  },
+  {
+    "id": "minimalist_bauhaus",
+    "name": "Minimalist Bauhaus Architecture",
+    "category": "Design & Architecture",
+    "tags": ["bauhaus", "minimalist", "architecture", "geometric", "clean"],
+    "text": "Minimalist Bauhaus architectural composition: pure geometric forms, raw concrete and brushed steel materials, disciplined negative space, functional asymmetry, and sharp diagonal shadow casting."
+  },
+  {
+    "id": "dark_fantasy_gothic",
+    "name": "Dark Fantasy Gothic",
+    "category": "Artistic Style",
+    "tags": ["gothic", "dark fantasy", "fog", "castle", "mysterious"],
+    "text": "Dark gothic fantasy atmosphere: weathered stone gargoyles, ornate pointed arches, clinging thick ground mist, cold silver moonlight breaking through twisted dead branches, and haunting ancient majesty."
+  },
+  {
+    "id": "retro_synthwave",
+    "name": "Retro 80s Synthwave",
+    "category": "Lighting & Atmosphere",
+    "tags": ["synthwave", "80s", "retrofuturism", "grid", "laser", "vintage"],
+    "text": "1980s synthwave retrofuturism: glowing purple-pink laser wireframe grid receding to infinity, giant striped neon sunset on the horizon, polished chrome reflections, and vintage CRT scanline warmth."
+  },
+  {
+    "id": "vaporwave_aesthetic",
+    "name": "Vaporwave Pastel Dream",
+    "category": "Artistic Style",
+    "tags": ["vaporwave", "pastel", "statue", "90s", "aesthetic"],
+    "text": "Vaporwave aesthetic: serene pastel color palette of lilac, peach, and seafoam green, classical Roman marble sculpture fragments, nostalgic early 90s computer interface motifs, and hazy tropical sunset glow."
+  },
+  {
+    "id": "baroque_chiaroscuro",
+    "name": "Baroque Chiaroscuro",
+    "category": "Artistic Style",
+    "tags": ["baroque", "chiaroscuro", "caravaggio", "oil painting", "dramatic"],
+    "text": "Baroque chiaroscuro master painting style: profound tenebrism with pitch-black backgrounds, single intense directional beam of golden candlelight, rich impasto oil paint texture, and dramatic emotional tension."
+  },
+  {
+    "id": "watercolor_impressionism",
+    "name": "Watercolor Impressionism",
+    "category": "Artistic Style",
+    "tags": ["watercolor", "impressionist", "painting", "monet", "artistic"],
+    "text": "Loose watercolor impressionism: wet-on-wet pigment blooms, bleeding edges, luminous translucent color washes, expressive dry brush strokes, and authentic cold-press rough watercolor paper texture."
+  },
+  {
+    "id": "futuristic_scifi_clean",
+    "name": "Clean Aerospace Sci-Fi",
+    "category": "Design & Architecture",
+    "tags": ["scifi", "clean", "white", "spaceship", "futuristic", "minimal"],
+    "text": "Clean pristine sci-fi aesthetics: matte white composite armor panels, subtle recessed blue LED seam illumination, ergonomic aerodynamic curves, carbon-fiber accents, and sterile aerospace laboratory cleanliness."
+  },
+  {
+    "id": "vintage_polaroid_70s",
+    "name": "Vintage 1970s Polaroid",
+    "category": "Photography & Technique",
+    "tags": ["polaroid", "vintage", "70s", "film", "analog", "nostalgic"],
+    "text": "Authentic 1970s vintage instant photo: warm faded tones with yellow-green cast, soft lens corner vignetting, slight chemical film emulsion artifacts, characteristic nostalgic chromatic fringing, and tactile paper frame."
+  },
+  {
+    "id": "steampunk_industrial",
+    "name": "Steampunk Victorian Mechanical",
+    "category": "Design & Architecture",
+    "tags": ["steampunk", "victorian", "brass", "gears", "industrial"],
+    "text": "Intricate steampunk Victorian machinery: burnished brass gears, coiled copper tubing, pressure gauges with glass faces, riveted cast iron structures, billowing plumes of white steam, and warm oil-lamp illumination."
+  },
+  {
+    "id": "isometric_3d_diorama",
+    "name": "Isometric 3D Clay Diorama",
+    "category": "Digital Art & 3D",
+    "tags": ["isometric", "diorama", "3d", "miniature", "clay", "cute"],
+    "text": "Charming isometric 3D miniature diorama: orthographic angle, smooth clay-like rounded surfaces, tilt-shift miniature depth-of-field effect, soft ambient studio lighting, and clean floating cubic pedestal."
+  },
+  {
+    "id": "mythological_ethereal",
+    "name": "Mythological Celestial Glow",
+    "category": "Artistic Style",
+    "tags": ["mythology", "ethereal", "celestial", "gold", "divine", "godly"],
+    "text": "Mythological celestial majesty: radiant divine god rays piercing heavenly clouds, glowing gold leaf accents, floating shimmering particle motes, shimmering bioluminescence, and timeless sacred grandeur."
+  },
+  {
+    "id": "pop_art_comic",
+    "name": "Vintage Comic Pop Art",
+    "category": "Artistic Style",
+    "tags": ["comic", "pop art", "halftone", "lichentstein", "graphic"],
+    "text": "Vintage comic book pop art: high-contrast black ink brush outlines, visible Ben-Day halftone dot printing pattern, punchy primary CMYK print palette, dynamic action lines, and pulp paper print texture."
+  },
+  {
+    "id": "high_fashion_editorial",
+    "name": "High Fashion Editorial",
+    "category": "Photography & Lighting",
+    "tags": ["fashion", "editorial", "vogue", "model", "striking", "glamour"],
+    "text": "Avant-garde high fashion magazine editorial: striking dynamic pose, sculptural designer silhouette, sharp contrast flash photography with dark shadows, high saturation editorial color grading, and bold modern luxury."
+  },
+  {
+    "id": "cybernetic_mech_industrial",
+    "name": "Heavy Industrial Cybernetic Mech",
+    "category": "Digital Art & 3D",
+    "tags": ["mech", "robot", "industrial", "armor", "military", "hard surface"],
+    "text": "Hard-surface heavy industrial mech: weathered olive and hazard-yellow matte armor plating, exposed hydraulic pistons and braided wiring harnesses, paint chipping, grease stains, and stencil technical warning decals."
+  },
+  {
+    "id": "polar_aurora_night",
+    "name": "Arctic Aurora Borealis",
+    "category": "Lighting & Atmosphere",
+    "tags": ["aurora", "night", "arctic", "nature", "stars", "landscape"],
+    "text": "Arctic night sky spectacle: vivid curtains of emerald and amethyst aurora borealis undulating overhead, pristine snowdrifts casting pale reflections, mirror-calm dark fjord waters, and brilliant pin-prick stars."
+  },
+  {
+    "id": "urban_street_leica",
+    "name": "Gritty Leica Street Photography",
+    "category": "Photography & Technique",
+    "tags": ["street", "leica", "black and white", "monochrome", "documentary"],
+    "text": "Henri Cartier-Bresson inspired street photography: high-contrast monochrome silver gelatin tones, capturing the decisive candid moment, crisp Leica 35mm optical fidelity, natural harsh sunlight and deep geometry."
+  },
+  {
+    "id": "claymation_stopmotion",
+    "name": "Handmade Claymation Stop-Motion",
+    "category": "Digital Art & 3D",
+    "tags": ["claymation", "stopmotion", "clay", "handmade", "animation"],
+    "text": "Handcrafted stop-motion animation look: tangible polymer clay modeling with subtle thumbprints, physical miniature sets, warm tactile key lighting, shallow depth of field, and whimsical artisanal charm."
+  },
+  {
+    "id": "architectural_blueprint",
+    "name": "Technical Cyanotype Blueprint",
+    "category": "Design & Architecture",
+    "tags": ["blueprint", "technical", "schematic", "drawing", "engineering"],
+    "text": "Precision architectural cyanotype blueprint: deep Prussian blue background with razor-sharp crisp white technical drafting lines, dimensional annotations, grid markers, and cross-section schematics."
+  },
+  {
+    "id": "deep_sea_bioluminescence",
+    "name": "Deep Sea Abyssal Bioluminescence",
+    "category": "Lighting & Atmosphere",
+    "tags": ["underwater", "deep sea", "bioluminescent", "glowing", "ocean"],
+    "text": "Abyssal deep-sea ecosystem: pitch-black oceanic void illuminated by pulsating neon cyan and electric violet bioluminescent organism organs, translucent drifting jellyfish tendrils, and floating marine snow particles."
+  },
+  {
+    "id": "anime_shinkai_sky",
+    "name": "Anime Sky Art (Makoto Shinkai)",
+    "category": "Artistic Style",
+    "tags": ["anime", "sky", "clouds", "shinkai", "colorful", "scenery"],
+    "text": "Makoto Shinkai inspired anime background art: colossal towering cumulus clouds lit by a setting sun, vivid gradient transitions from cobalt blue to blazing coral orange, lens flares, and emotional expansive sky."
+  },
+  {
+    "id": "epic_concept_matte",
+    "name": "Epic Panoramic Matte Painting",
+    "category": "Artistic Style",
+    "tags": ["matte painting", "concept art", "epic", "landscape", "cinema"],
+    "text": "Cinematic fantasy concept matte painting: immense sweeping scale, atmospheric depth with misty mountain ridges fading into distance, golden sun shafts breaking through storm clouds, and detailed heroic composition."
+  },
+  {
+    "id": "film_noir_hardboiled",
+    "name": "Classic 1940s Film Noir",
+    "category": "Lighting & Atmosphere",
+    "tags": ["noir", "film noir", "detective", "shadows", "vintage"],
+    "text": "Classic 1940s film noir cinematography: harsh stark shadows cast through Venetian blinds across a smoke-filled office, high-contrast black-and-white tonal depth, rainy window silhouettes, and moody dramatic mood."
+  },
+  {
+    "id": "gothic_stained_glass",
+    "name": "Luminous Gothic Stained Glass",
+    "category": "Artistic Style",
+    "tags": ["stained glass", "gothic", "cathedral", "church", "colorful"],
+    "text": "Intricate Gothic cathedral stained-glass window: dark soldered lead ribbons binding glowing jewel-toned ruby, sapphire, and amber glass segments, with kaleidoscopic sunlight projecting vibrant colored patterns on ancient stone."
+  },
+  {
+    "id": "low_poly_geometric",
+    "name": "Stylized Low-Poly Geometric 3D",
+    "category": "Digital Art & 3D",
+    "tags": ["low poly", "geometric", "minimalist", "3d", "polygonal"],
+    "text": "Stylized low-poly 3D art: faceted planar polygon surfaces, clean crisp polygonal edges, flat pastel lighting gradients, no textures, minimalist clean composition with soft ambient occlusion shadows."
+  }
+]
