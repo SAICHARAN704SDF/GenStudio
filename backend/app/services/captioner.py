@@ -8,8 +8,7 @@ mapping: Image -> Text.
 
 Comparing the input prompt with the BLIP-generated description of the output image
 reveals semantic drift or whether the model accurately captured the intended subject.
-To maintain strict memory safety under the 8GB RAM envelope, BLIP executes on CPU,
-leaving Apple Silicon MPS GPU memory reserved for diffusion.
+To maintain memory efficiency, BLIP executes on CPU, leaving GPU memory reserved for diffusion.
 """
 
 import time

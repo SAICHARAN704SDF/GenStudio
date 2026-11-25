@@ -1,13 +1,11 @@
 """
-Diffusion Generation Service (SD-Turbo on Apple Silicon MPS)
--------------------------------------------------------------
-Why this file exists:
+Diffusion Generation Service (SD-Turbo)
+----------------------------------------
 Implements the core image synthesis engine using Hugging Face Diffusers.
 We use `stabilityai/sd-turbo`, which implements Adversarial Diffusion Distillation (ADD).
 Traditional diffusion models (DDPM/DDIM) reverse a Markovian forward noise process
 over 20-50 iterations using classifier-free guidance. SD-Turbo distills this into
-1 to 4 steps with guidance_scale=0.0, reducing inference latency from ~45 seconds
-to ~1.5 - 3.0 seconds on an Apple Silicon M3 GPU (MPS) under an 8GB memory envelope.
+1 to 4 steps with guidance_scale=0.0, enabling sub-2-second local generation.
 
 Supported Generative Modalities:
 1. Text-to-Image (T2I) with optional Negative Prompting & LoRA
@@ -78,7 +76,7 @@ class SDTurboGenerator:
         self.pipe.to(DEVICE)
         self.pipe.set_progress_bar_config(disable=True)
 
-        # Memory optimization for 8GB Apple Silicon M3:
+        # Memory optimization: attention and VAE slicing
         # Slicing reduces peak memory allocation by ~40%
         if hasattr(self.pipe, "enable_attention_slicing"):
             self.pipe.enable_attention_slicing()

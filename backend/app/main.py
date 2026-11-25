@@ -30,10 +30,10 @@ async def lifespan(app: FastAPI):
     Application Lifespan:
     Pre-warms in-memory RAG vector index during server boot.
     Vision and diffusion models load on-demand via thread-safe singletons to minimize
-    peak memory allocation on Apple Silicon M3 (8GB RAM).
+    peak memory allocation.
     """
     print("\n" + "="*60)
-    print("🚀 Booting GenStudio Backend (Apple Silicon M3 Optimized)")
+    print("🚀 Booting GenStudio Backend")
     print("="*60)
 
     # 1. Initialize in-process RAG index (~80MB footprint)

@@ -21,3 +21,7 @@ yarn-debug.log*
 ._*
 .Spotlight-V100
 .Trashes
+
+# Runtime local generation history and temporary files
+backend/data/generation_history.json
+*.tmp

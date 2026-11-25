@@ -13,7 +13,7 @@ export default function Header({ health, onOpenVivaGuide }) {
         </div>
         <div>
           <h1 className="brand-title">GenStudio</h1>
-          <p className="brand-subtitle">Interactive Generative AI Workbench &bull; Apple Silicon M3</p>
+          <p className="brand-subtitle">Interactive Generative AI Workbench &bull; Local Acceleration</p>
         </div>
       </div>
 

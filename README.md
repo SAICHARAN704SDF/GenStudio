@@ -1,98 +1,96 @@
-# GenStudio: Local Generative AI Studio (ComfyUI Interface)
+# GenStudio: Local Generative AI Studio & Multimodal Workbench
 
-[![PyTorch](https://img.shields.io/badge/PyTorch-MPS_float16-EE4C2C?logo=pytorch)](https://pytorch.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-Local_Inference-EE4C2C?logo=pytorch)](https://pytorch.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.111.0-009688?logo=fastapi)](https://fastapi.tiangolo.com/)
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?logo=vite)](https://vitejs.dev/)
 [![Ollama](https://img.shields.io/badge/Ollama-qwen2.5%3A3b-black?logo=ollama)](https://ollama.ai/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> **GenStudio** is a 100% local, privacy-first Generative AI creative suite built  It runs completely offline on Apple Silicon (M1/M2/M3/M4) Macs using PyTorch Metal Performance Shaders (MPS), requiring zero paid APIs or cloud dependencies.
+> **GenStudio** is a privacy-first, 100% local Generative AI creative studio and research workbench. It combines ultra-fast diffusion synthesis, retrieval-augmented prompt engineering, multimodal computer vision perception, and closed-loop agentic evaluation without relying on paid third-party APIs or cloud services.
+
+**Author:** Kailasa Charan
+
+---
+
+## 📸 Demo Showcase
+
+### 1. Studio Workspace
+The core creative canvas providing prompt engineering, style assistance, generation controls, and real-time inspector telemetry.
+
+![GenStudio Workspace](screenshots/studio_workspace.png)
+
+### 2. Live Generation & Multimodal Perception
+High-fidelity generation paired with automated BLIP vision captioning, OpenCLIP semantic alignment scoring, and autonomous critique.
+
+![GenStudio Generation & Multimodal Evaluation](screenshots/studio_generation.png)
 
 ---
 
 ## 🌟 What is GenStudio?
 
-GenStudio turns complex Generative AI workflows into an interactive, visual playground. Instead of just clicking a "Generate" button on a basic form, you get:
+GenStudio demystifies generative diffusion models by turning the synthesis pipeline into a transparent, observable workflow. Rather than treating diffusion as an opaque black box, GenStudio exposes:
 
-1. **Visual Node Graph (ComfyUI DAG):** See exactly how your prompts, models, latent vectors, and decoders connect via color-coded spline wires.
-2. **Live Step-by-Step Inspector:** A right-side panel that explains in plain English and clear math what each node is doing at every moment.
-3. **Multimodal Perception & Speech:** The AI analyzes its own output using computer vision, scores how well it matched your prompt, and speaks the description aloud.
-4. **Autonomous AI Critic:** An agentic feedback loop that spots mistakes or missing subjects, automatically rewrites the prompt, and re-synthesizes an improved image.
-
----
-
-## 🧠 How It Works (In Simple Terms)
-
-Generating an image with AI usually feels like a black box. In GenStudio, every stage is transparent and visual:
-
-```
-[ Your Idea ]
-      │
-      ▼
-1. Smart Prompt Augmentation (RAG + Local LLM)
-      │
-      ▼
-2. Latent Space Preparation (Noise, Sketch, or Slerp)
-      │
-      ▼
-3. Ultra-Fast Denoising (SD-Turbo on Apple Silicon MPS)
-      │
-      ▼
-4. Image Decoding (VAE: Latents → 512x512 Pixels)
-      │
-      ▼
-5. Seeing & Scoring (BLIP Captioning + OpenCLIP Score + TTS)
-      │
-      ▼
-6. AI Critic Loop (Autonomous Refinement)
-```
-
-### 1. Smart Prompt Augmentation (RAG + Local LLM)
-* **What happens:** When you enter a short idea (e.g. *"a samurai in rain"*), GenStudio searches a built-in library of 30 curated lighting and art techniques using semantic embeddings.
-* **Why it matters:** A local lightweight language model (`qwen2.5:3b` via Ollama) blends these professional styles into your prompt so you get cinematic lighting without having to guess magic keywords.
-
-### 2. Compressed Latent Space
-* **What happens:** Working with full pixel images (512×512×3) requires huge amounts of memory. Instead, GenStudio works inside a compressed "latent" space (64×64×4) that is **64 times smaller**.
-* **Three ways to start:**
-  * **Text-to-Image (T2I):** Starts with pure random Gaussian noise.
-  * **Image-to-Image (Img2Img):** Takes your uploaded reference sketch or photo, preserves the composition, and adds controlled noise for the AI to redraw.
-  * **Latent Slerp (Spherical Interpolation):** Smoothly walks along the curved surface of the latent sphere between two different seeds, letting you explore intermediate variations without image distortion.
-
-### 3. Fast Denoising (SD-Turbo on Apple Silicon MPS)
-* **What happens:** Standard Stable Diffusion models take 20 to 50 steps to clear away noise. GenStudio uses **SD-Turbo** (Adversarial Diffusion Distillation), which predicts the final image in just **1 to 2 steps**.
-* **Hardware optimization:** It runs on Apple Silicon Metal Performance Shaders (`torch.float16`) with attention slicing, consuming under 2GB of VRAM and generating in seconds on an 8GB RAM MacBook Air.
-
-### 4. Converting Back to Pixels (VAE Decoder)
-* **What happens:** Once the noise is removed from the 64×64 latent tensor, the Variational Autoencoder (VAE) decoder blows it back up by $8\times$ into a crisp 512×512 RGB picture.
-
-### 5. Multimodal Perception & Speech (BLIP + OpenCLIP)
-* **What happens:** GenStudio doesn't stop once the image is saved:
-  * **BLIP Vision:** A vision model looks at the generated image and describes what it sees in natural language.
-  * **Browser TTS:** The browser reads the BLIP caption aloud through your speakers.
-  * **OpenCLIP ViT-B-32:** Compares your original prompt vector with the image vector to give an objective match score (e.g. *0.38 - Exceptional Alignment*).
-
-### 6. Autonomous AI Critic (RLVF Feedback Loop)
-* **What happens:** Clicking **"🤖 AI Critic & Auto-Refine"** feeds the user prompt, BLIP's caption, and the CLIP score to the local Ollama LLM. The critic diagnoses any missing elements (e.g. *"You asked for a red moon, but none appeared"*), formulates a targeted prompt and negative prompt, and immediately re-runs the pipeline.
+1. **Low-Latency Synthesis:** Sub-2-second generation using Adversarial Diffusion Distillation (SD-Turbo).
+2. **Retrieval-Augmented Generation (RAG):** Semantic search over curated artistic styles combined with local LLM prompt expansion.
+3. **Multimodal Perception (Vision-to-Language):** Automatic image understanding via BLIP captioning and browser-native Text-to-Speech narration.
+4. **Objective Alignment Evaluation:** Direct image-text cosine similarity measurement via OpenCLIP ViT-B-32.
+5. **Visual Critic AI Agent:** An autonomous visual feedback loop that diagnoses missing details and iteratively refines prompts.
+6. **Latent Manifold Navigation (Slerp):** Spherical linear interpolation between random seeds without variance collapse.
+7. **Parameter-Efficient Adaptation (LoRA):** Dynamic loading and scaling of rank-decomposed cross-attention weights.
 
 ---
 
-## 🎨 Supported Generation Modes
+## 🧠 System Architecture
 
-| Mode | Input | Best For |
+```
+[ User Prompt ]
+       │
+       ▼
+1. Style Retrieval (MiniLM-L6-v2 384-d Cosine Similarity)
+       │
+       ▼
+2. Prompt Enhancement (Local Qwen 2.5 3B via Ollama)
+       │
+       ▼
+3. Latent Space Initialization (Gaussian Noise / Input Image / Slerp)
+       │
+       ▼
+4. Fast Denoising Pipeline (SD-Turbo ADD Diffusion + Optional LoRA)
+       │
+       ▼
+5. Pixel Reconstruction (VAE Decoder: 64×64×4 → 512×512×3)
+       │
+       ▼
+6. Multimodal Perception (BLIP Vision Captioning + Speech Synthesis)
+       │
+       ▼
+7. Objective Semantic Scoring (OpenCLIP ViT-B-32 Alignment)
+       │
+       ▼
+8. Autonomous AI Critic (RLVF-Inspired Closed-Loop Prompt Refinement)
+```
+
+---
+
+## 🎨 Core Generative Modalities
+
+| Modality | Input | Description |
 | :--- | :--- | :--- |
-| **Text-to-Image (T2I)** | Text Prompt | Creating original concepts from scratch with 1-2 steps. |
-| **Image-to-Image (Img2Img)** | Sketch + Prompt | Guiding layout and composition with your own reference art. |
-| **Latent Slerp (Manifold)** | Seed A + Seed B | Smoothly interpolating between two seeds with a frame slider. |
+| **Text-to-Image (T2I)** | Text Prompt | Synthesizes original 512×512 images in 1 to 4 steps from Gaussian noise. |
+| **Image-to-Image (Img2Img)** | Reference Image + Prompt | Re-synthesizes images guided by user sketches or photos with adjustable denoising strength ($\eta$). |
+| **Latent Slerp (Manifold)** | Seed A + Seed B | Smoothly walks the hypersphere latent manifold between two seeds with constant variance. |
+| **LoRA Adaptation** | Adapter Path + Scale | Dynamically blends rank-decomposed adapter weights ($W = W_0 + \alpha \Delta W$) into cross-attention layers. |
 
 ---
 
-## 🛠️ System Requirements
+## 🛠️ Prerequisites & Installation
 
-* **Operating System:** macOS (Apple Silicon M1, M2, M3, M4 recommended)
-* **Memory:** 8GB RAM minimum
+### Requirements
 * **Python:** 3.10, 3.11, or 3.12
 * **Node.js:** v18+ and npm
-* **Ollama:** Installed locally with model `qwen2.5:3b`
+* **Hardware:** Any modern system with GPU acceleration (Apple Silicon MPS or NVIDIA CUDA) or CPU fallback
+* **Ollama:** Installed locally with `qwen2.5:3b`
 
 ---
 
@@ -104,14 +102,14 @@ git clone https://github.com/SAICHARAN704SDF/GenStudio.git
 cd GenStudio
 ```
 
-### 2. Start Ollama (Local LLM)
-Make sure Ollama is running and has the lightweight `qwen2.5:3b` model downloaded:
+### 2. Pull the Local LLM Model
+Ensure the Ollama service is running and pull the prompt enhancement model:
 ```bash
 ollama run qwen2.5:3b
 ```
-*(You can exit the chat with `/bye`; Ollama will continue serving on port 11434).*
+*(You can exit the interactive prompt with `/bye`; Ollama continues serving in the background).*
 
-### 3. Setup & Run the Backend
+### 3. Start the Backend
 ```bash
 cd backend
 
@@ -125,9 +123,9 @@ pip install -r requirements.txt
 # Start backend server
 uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
-Backend will be live at `http://127.0.0.1:8000`.
+Backend API will be accessible at `http://127.0.0.1:8000/api/health`.
 
-### 4. Setup & Run the Frontend
+### 4. Start the Frontend
 In a new terminal window:
 ```bash
 cd frontend
@@ -142,46 +140,60 @@ Open [`http://localhost:5173`](http://localhost:5173) in your browser.
 
 ---
 
-## 📂 Project Architecture
+## 📁 Repository Structure
 
 ```
 GenStudio/
 ├── backend/
 │   ├── app/
-│   │   ├── main.py              # FastAPI application & CORS setup
-│   │   ├── config.py            # Device selection (MPS/CPU) & model paths
-│   │   ├── routes/              # API endpoints (/generate, /slerp, /enhance, /critic)
-│   │   └── services/            # SD-Turbo engine, BLIP, CLIP, RAG vector search
+│   │   ├── config.py            # Device selection (MPS/CUDA/CPU) & model IDs
+│   │   ├── main.py              # FastAPI server entrypoint & CORS
+│   │   ├── routes/
+│   │   │   ├── enhance.py       # RAG style augmentation endpoint
+│   │   │   ├── generate.py      # T2I, Img2Img, Slerp synthesis & evaluation
+│   │   │   ├── health.py        # System health and hardware diagnostics
+│   │   │   └── history.py       # Session history management
+│   │   └── services/
+│   │       ├── captioner.py     # BLIP vision-to-language captioning
+│   │       ├── critic.py        # Visual Critic AI prompt refinement
+│   │       ├── evaluator.py     # OpenCLIP ViT-B-32 alignment scoring
+│   │       ├── generator.py     # SD-Turbo diffusion engine & Slerp
+│   │       ├── history_store.py # Local JSON history persistence
+│   │       └── rag.py           # In-process MiniLM vector search
 │   ├── data/
-│   │   └── style_snippets.json  # 30 curated lighting/art style embeddings
-│   └── requirements.txt         # PyTorch, Diffusers, Transformers, FastAPI
+│   │   ├── sample_style_lora.safetensors # Pretrained LoRA adapter weights
+│   │   └── style_snippets.json           # Curated style knowledge base
+│   └── requirements.txt         # Core Python dependencies
 │
 ├── frontend/
-│   ├── src/
-│   │   ├── components/comfy/    # ComfyUI node-graph components
-│   │   │   ├── nodes/           # Individual graph nodes (KSampler, VAE, CLIP, LoRA)
-│   │   │   ├── ComfyFlow.jsx    # React Flow canvas assembly & bezier splines
-│   │   │   ├── ComfyInspector.jsx # Live right-side process explanation panel
-│   │   │   ├── ComfyTopBar.jsx  # Window bar & Run button
-│   │   │   └── ComfySidebar.jsx # Tool rail
-│   │   ├── services/api.js      # REST API client
-│   │   ├── comfy.css            # Authentic ComfyUI dark theme styles
-│   │   └── App.jsx              # Application state and pipeline progression
-│   ├── package.json
-│   └── vite.config.js
+│   ├── index.html               # Frontend HTML root
+│   ├── package.json             # React & Vite dependencies
+│   ├── vite.config.js           # Vite dev build config
+│   └── src/
+│       ├── App.jsx              # Main Studio canvas application
+│       ├── studio.css           # Studio interface styling
+│       ├── main.jsx             # React DOM root mounting
+│       ├── services/
+│       │   └── api.js           # REST API client
+│       └── components/          # Reusable modular UI components
+│
+├── screenshots/
+│   ├── studio_workspace.png     # Workspace interface screenshot
+│   └── studio_generation.png    # Live generation & evaluation screenshot
 │
 ├── run_backend.sh               # One-click backend startup script
 ├── run_frontend.sh              # One-click frontend startup script
-└── README.md
+├── .gitignore                   # Git exclusion configuration
+└── README.md                    # Project documentation
 ```
 
 ---
 
-## 🔒 Privacy & Local Execution
+## 🔒 Security & Privacy
 
-* **Zero Cloud Calls:** All text synthesis, image generation, vision captioning, and CLIP evaluation execute on your own machine.
-* **Apple Silicon Accelerated:** Utilizes PyTorch MPS (`float16`) to maximize M-series unified memory bandwidth.
-* **Low Memory Footprint:** Models automatically clear cache after every inference pass to stay under 4GB total RAM during peak load.
+* **100% Local Inference:** Zero user prompts, reference images, or generated artwork are transmitted to external servers.
+* **Local Foundation Models:** All diffusion models, LLMs, vision-language captioners, and embedding models run entirely on your own device.
+* **Open Source Stack:** Built on PyTorch, Hugging Face Diffusers, Transformers, FastAPI, and React.
 
 ---
 

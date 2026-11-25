@@ -76,7 +76,7 @@ const PIPELINE_STEPS = [
     keyAdvantages: [
       'SD-Turbo ADD distillation generates photorealistic outputs in 1-2 steps vs 20-50 steps for SD 1.5/2.1.',
       'Apple Silicon MPS float16 halves memory footprint from 3.4GB down to 1.7GB.',
-      'Attention slicing computes cross-attention in sequential tiles, preventing out-of-memory errors on 8GB RAM.'
+      'Attention slicing computes cross-attention in sequential tiles, preventing out-of-memory errors.'
     ]
   },
   {
